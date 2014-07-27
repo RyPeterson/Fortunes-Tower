@@ -293,5 +293,29 @@ public class Board
 
         return value;
     }
-
+    
+    /**
+     * Gets a row of Cards from the Board.
+     * Care must be taken to not change the state of
+     * the row, but this sort of operation is allowed.
+     * @param rowNumber the row of cards to get
+     * @return null, if the row is out of bounds, an array of
+     * null if the row hasn't been dealt, or an array of Cards from the row
+     */
+    public Card []getCardsInRow(int rowNumber)
+    {
+        if(rowNumber >= 0 && rowNumber < LAST_LEVEL)
+            return board[rowNumber];
+        else
+            return null;
+    }
+    
+    /**
+     * Gets the last row dealt.
+     * @return the last row of Cards dealt.
+     */
+    public Card []getLastRow()
+    {
+        return getCardsInRow(nextRow - 1);
+    }
 }
