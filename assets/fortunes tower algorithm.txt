@@ -1,0 +1,31 @@
+while board is not complete and a second misfortune occurs
+    deal a row.
+    check for a misfortune
+    {
+        if row contains a knight,
+            automatically immune to misfortune
+        if the card the row above it has the same face
+            misfortune
+        if the card the row above it to the right has same face
+            misfortune
+    }
+
+    if first misfortune
+        flip gate card, place at first possible misfortune occurance
+        recheck misfortune occurance
+    if second misfortune
+        round over, player gets no points.
+
+    otherwise, total the row, that is the current point total.
+
+
+if the board is complete:
+    if the gate card is still face down
+        jackpot; player wins the total sum of the faces of the cards on the board
+    else
+        player wins the points on the last row
+
+
+Cash Out
+    at any point before the second misfortune and the completion of the board,
+    the player can cash out and win the points on the current row.
