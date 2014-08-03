@@ -14,6 +14,7 @@ import java.util.List;
  * This is done by loading the images into a list,
  * then iterating through the list to
  * resize to the desired size, all while on a thread.
+ * @deprecated this class does not handle the stitched cards used in the game
  * @author Peterson, Ryan
  *         Created 7/24/2014
  */
