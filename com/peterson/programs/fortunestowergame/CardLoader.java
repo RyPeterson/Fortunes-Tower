@@ -2,9 +2,13 @@ package com.peterson.programs.fortunestowergame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -22,7 +26,7 @@ public class CardLoader
     /**
      * The directory of the stitched cards
      */
-    public static final String FILE = "./cards/fortunecards.png";
+    public static final String FILE = "FortuneCards.png";
 
     /*
         This constants should never be messed with
@@ -41,10 +45,11 @@ public class CardLoader
      */
     public static void loadImages(List<ImageIcon> images)
     {
-        BufferedImage mainImage = null;
+        BufferedImage mainImage;
         try
         {
-            mainImage = ImageIO.read(new File(FILE));
+            URL imgURL = CardLoader.class.getResource(FILE);
+            mainImage = ImageIO.read(imgURL);
         }
         catch (IOException e)
         {
@@ -55,8 +60,10 @@ public class CardLoader
             throw new RuntimeException(e);
         }
 
+
         if(images.size() != 0)
             images.clear();
+
 
         int x = 0;
         int y = 0;
