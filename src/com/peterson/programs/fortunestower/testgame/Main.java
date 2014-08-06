@@ -1,4 +1,4 @@
-package com.peterson.programs.fortunestower.TestGame;
+package com.peterson.programs.fortunestower.testgame;
 
 /**
  * Application Runner Class.
