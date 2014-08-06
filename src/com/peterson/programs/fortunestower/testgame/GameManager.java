@@ -1,6 +1,6 @@
 package com.peterson.programs.fortunestower.testgame;
 
-import com.peterson.programs.fortunestower.Board;
+import com.peterson.programs.fortunestower.Board2D;
 import com.peterson.programs.fortunestower.Deck;
 import com.peterson.programs.fortunestower.TestDeck;
 
@@ -13,13 +13,14 @@ import java.util.Scanner;
  * This is mostly for demonstration purposes.
  * The Deck will be an instance of TestDeck, using a standard
  * Diamond deck.
+ *
  * @author Peterson, Ryan
  *         Created 7/25/2014
  */
 public class GameManager implements Runnable
 {
     private Deck deck;
-    private Board board;
+    private Board2D board2D;
     private Scanner cin;
 
     /**
@@ -30,7 +31,7 @@ public class GameManager implements Runnable
     public GameManager()
     {
         deck = new TestDeck(Deck.DIAMOND_DECK);
-        board = new Board(deck);
+        board2D = new Board2D(deck);
         cin = new Scanner(System.in);
     }
 
@@ -40,7 +41,7 @@ public class GameManager implements Runnable
     public void run()
     {
         boolean keepGoing = true;
-        while(keepGoing)
+        while (keepGoing)
         {
             boolean done = false;
             boolean trySave = false;
@@ -50,36 +51,36 @@ public class GameManager implements Runnable
             {
                 //print out the board and the current line's points
                 System.out.println("Current Board:\n");
-                System.out.print(board);
-                System.out.println("\nPoints: " + board.rowValue());
+                System.out.print(board2D);
+                System.out.println("\nPoints: " + board2D.rowValue());
 
                 //if the user wants to quit the game, cashing in on the current points
                 //let them
                 if (cashIn())
                 {
                     done = true;
-                    System.out.println("You won: " + board.rowValue());
+                    System.out.println("You won: " + board2D.rowValue());
                 }
                 else
                 {
                     //Main game logic.
 
                     //deal the next row, and check for misfortune
-                    board.nextRow();
+                    board2D.nextRow();
 
-                    if (board.misFortune() && !trySave) //if its a misfortune and no attempt to save has been made
+                    if (board2D.misFortune() && !trySave) //if its a misfortune and no attempt to save has been made
                     {
                         trySave = true;
-                        System.out.println("Yikes! A potential Misfortune!\n" + board);
+                        System.out.println("Yikes! A potential Misfortune!\n" + board2D);
 
                         //try to save the row
-                        board.trySave();
+                        board2D.trySave();
 
                         //if, even after the row has been changed to save it, its a misfortune, game over
-                        if (board.misFortune())
+                        if (board2D.misFortune())
                         {
                             System.out.println("MISFORTUNE");
-                            System.out.println(board);
+                            System.out.println(board2D);
                             done = true;
                         }
 
@@ -88,20 +89,20 @@ public class GameManager implements Runnable
                 }
 
                 //if all 36 cards have been used, then the game is complete without misfortune
-                if (board.isComplete() && !board.misFortune())
+                if (board2D.isComplete() && !board2D.misFortune())
                 {
                     //if there was a jackpot (the gate card isn't used)
-                    if (board.hitJackpot())
+                    if (board2D.hitJackpot())
                     {
                         System.out.println("Hit the Jack Pot!");
-                        System.out.println("Jackpot Value: " + board.jackpotValue());
+                        System.out.println("Jackpot Value: " + board2D.jackpotValue());
                     }
                     else
                     {
                         //if the gate card is used, then summate the last row as points
-                        System.out.println("\n\n" + board);
+                        System.out.println("\n\n" + board2D);
                         System.out.print("Board is complete\nFinal Points:");
-                        System.out.println(board.rowValue());
+                        System.out.println(board2D.rowValue());
                     }
                     done = true;
                 }
@@ -109,10 +110,10 @@ public class GameManager implements Runnable
 
             keepGoing = playAgain();
 
-            if(keepGoing)
+            if (keepGoing)
             {
                 deck = new TestDeck(Deck.DIAMOND_DECK);
-                board = new Board(deck);
+                board2D = new Board2D(deck);
             }
         }
     }
@@ -125,7 +126,7 @@ public class GameManager implements Runnable
         /*
          * This loop will end once a Y or N is entered.
          */
-        while(true)
+        while (true)
         {
             System.out.print("Would you like to cash in and end the game? Y/N >");
             String choice = cin.nextLine();
@@ -147,7 +148,7 @@ public class GameManager implements Runnable
         /*
             This loop will end once correct input is made
          */
-        while(true)
+        while (true)
         {
             System.out.print("Would you like to play again? Y/N >");
             String line = cin.nextLine();

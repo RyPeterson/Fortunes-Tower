@@ -1,23 +1,15 @@
 package com.peterson.programs.fortunestowergame;
 
 import com.peterson.programs.fortunestower.Board;
+import com.peterson.programs.fortunestower.Board2D;
 import com.peterson.programs.fortunestower.Deck;
 import com.peterson.programs.fortunestower.TestDeck;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.Scanner;
 
 /**
  * Main GUI class for the game of Fortune's Tower.
@@ -95,7 +87,7 @@ public class GameFrame extends JFrame
 
         deck = new TestDeck(numberCards);
         panel = new GamePanel();
-        board = new Board(deck);
+        board = new Board2D(deck);
 
 
         fields = new JTextField[8];
@@ -212,7 +204,7 @@ public class GameFrame extends JFrame
 
         panel.addRow(map.mapRow(0));
         panel.addRow(map.mapRow(1));
-        fields[1].setText(board.rowValue() + "");
+        fields[1].setText(board.lastRowValue() + "");
     }
 
     /*
@@ -276,7 +268,7 @@ public class GameFrame extends JFrame
                 board.nextRow();
                 rowPtr++;
                 panel.addRow(map.mapRow(rowPtr));
-                fields[rowPtr].setText("" + board.rowValue());
+                fields[rowPtr].setText("" + board.lastRowValue());
 
                 if (board.misFortune())
                 {
@@ -291,7 +283,7 @@ public class GameFrame extends JFrame
                         panel.flipGate();
                         panel.removeLastRow();
                         panel.addRow(map.mapRow(rowPtr));
-                        fields[rowPtr].setText("" + board.rowValue());
+                        fields[rowPtr].setText("" + board.lastRowValue());
 
                         //panel.repaint();
                         if (board.misFortune())
@@ -364,7 +356,7 @@ public class GameFrame extends JFrame
                     board.nextRow();
                     rowPtr++;
                     panel.addRow(map.mapRow(rowPtr));
-                    fields[rowPtr].setText("" + board.rowValue());
+                    fields[rowPtr].setText("" + board.lastRowValue());
                 }
             }
         }
@@ -384,7 +376,7 @@ public class GameFrame extends JFrame
             cp.remove(panel);
             deck = new TestDeck(numCards);
             panel = new GamePanel();
-            board = new Board(deck);
+            board = new Board2D(deck);
             for (int i = 1; i < fields.length; i++)
                 fields[i].setText("");
             rowPtr = 1;
