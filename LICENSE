@@ -337,3 +337,11 @@ proprietary programs.  If your program is a subroutine library, you may
 consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
+
+
+Fortune's Tower Game Notice:
+
+This program is, in no way, intended to be a copy or replacement of the Fortune's Tower
+game from the Fable video games; rather, it is to implement the process of making a game, trying to derive
+an algorithm and concept, based upon an existing game, as well as to show off
+the dev's programming skills. 
