@@ -1,4 +1,5 @@
 1) Switch to GridBagLayout and make GUI more appealing
-2) Optimize the game board, if possible
+~2) Optimize the game board, if possible(easier said than done)
 3) Review polymorphism so that the boards dont have to pass through GameBoard to get the ImageCards, since the boards
   use Cards, and ImageCards extend Card
+4) Add functionality to highlight cards on GUI when they cause misfortune. Pehaps part of ImageCard?
