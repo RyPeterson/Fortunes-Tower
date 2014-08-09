@@ -1,0 +1,4 @@
+1) Switch to GridBagLayout and make GUI more appealing
+2) Optimize the game board, if possible
+3) Review polymorphism so that the boards dont have to pass through GameBoard to get the ImageCards, since the boards
+  use Cards, and ImageCards extend Card
