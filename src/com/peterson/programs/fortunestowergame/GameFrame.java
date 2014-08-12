@@ -85,7 +85,7 @@ public class GameFrame extends JFrame
         pointLabel = new JLabel("Points: " + playerPoints);
 
 
-        deck = new TestDeck(numberCards);
+        deck = new GameDeck(numberCards);
         panel = new GamePanel();
         board = new Board2D(deck);
 
@@ -202,7 +202,9 @@ public class GameFrame extends JFrame
 
         map = new GameBoard(board, (int) pWidth / WIDTH_COEFF, (int) pHeight / HEIGHT_COEFF);
 
+
         panel.addRow(map.mapRow(0));
+
         panel.addRow(map.mapRow(1));
         fields[1].setText(board.lastRowValue() + "");
     }
