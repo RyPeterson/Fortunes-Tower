@@ -2,6 +2,7 @@ package com.peterson.programs.fortunestower;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * An Abstract Deck.
@@ -18,7 +19,7 @@ import java.util.LinkedList;
  */
 public abstract class Deck
 {
-    protected LinkedList<Card> deck;
+    protected List<Card> deck;
 
     /**
      * A Standard Diamond deck has 56 cards.
@@ -105,7 +106,7 @@ public abstract class Deck
      */
     public Card draw()
     {
-        return deck.removeLast();
+        return deck.remove(deck.size() - 1);
     }
 
     /**
