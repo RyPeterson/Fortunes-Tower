@@ -9,7 +9,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
 
 /**
  * Main GUI class for the game of Fortune's Tower.
@@ -224,12 +228,15 @@ public class GameFrame extends JFrame
             try
             {
                 StringBuilder b = new StringBuilder();
-                InputStream is = GameFrame.class.getResourceAsStream(FILE);
-                while(is.available() > 0)
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(GameFrame.class.getResourceAsStream(FILE)));
+                String line;
+                while ((line = reader.readLine()) != null)
                 {
-                		b.append((char)is.read());
+                    b.append(line).append(System.getProperty("line.separator"));
                 }
-                is.close();
+                reader.close();
+
                 return b.toString();
             }
             catch (Exception e)
@@ -276,7 +283,7 @@ public class GameFrame extends JFrame
                 {
                     if (!trySave)
                     {
-                        StringBuilder b = new StringBuilder("A Misfortune has Occured!\n");
+                        StringBuilder b = new StringBuilder("A Misfortune has Occurred!\n");
                         b.append("A save will now be attempted");
                         trySave = true;
                         JOptionPane.showMessageDialog(null, b.toString(), "Misfortune",
