@@ -27,20 +27,20 @@ public interface Board
      * The number of cards added is equal to the row
      * (ex. row 2 has two cards, row three has three cards, etc).
      */
-    public void nextRow();
+    void nextRow();
 
     /**
      * Determines if the board is complete.
      * A board is complete once all 8 rows of the board are filled
      * @return true if all the rows are filled with cards
      */
-    public boolean isComplete();
+    boolean isComplete();
 
     /**
      * Flips the card at the top of the board.
      * This reveals the gate card.
      */
-    public void flipGateCard();
+    void flipGateCard();
     /**
      * Gets the value of the Row.
      * The value is equal to the face sum of every
@@ -49,14 +49,14 @@ public interface Board
      * @return the value of the row, or -1 if the row hasn't been
      * dealt or if rowNum is out bounds
      */
-    public int rowValue(int rowNum);
+    int rowValue(int rowNum);
 
     /**
      * Gets the value of the last dealt row.
      * @see int rowValue(int rowNum) for specifics.
      * @return the value of the last dealt row.
      */
-    public int lastRowValue();
+    int lastRowValue();
 
     /**
      * Determines if a misfortune has happened.
@@ -68,7 +68,7 @@ public interface Board
      * the condition for a misfortune is met.
      * @return true if a misfortune occurs.
      */
-    public boolean misFortune();
+    boolean misFortune();
 
     /**
      * Try to save the board from a misfortune.
@@ -76,7 +76,7 @@ public interface Board
      * It will be placed where the first occurance of a misfortune
      * occurs, changing the value of that misfortune, potentially saving the board.
      */
-    public void trySave();
+    void trySave();
 
 
     /**
@@ -85,7 +85,7 @@ public interface Board
      * misfortune occurs.
      * @return true if the jackpot condition mentioned is met
      */
-    public boolean hitJackpot();
+    boolean hitJackpot();
 
     /**
      * Gets the value of a Jackpot.
@@ -94,7 +94,7 @@ public interface Board
      * @return 0 if the game isn't complete and no jackpot can be found,
      * or the sum of all cards on the board if the jackpot is met.
      */
-    public int jackpotValue();
+    int jackpotValue();
 
     /**
      * Gets a row of Cards from the Board.
@@ -104,11 +104,11 @@ public interface Board
      * @return null, if the row is out of bounds, an array of
      * null if the row hasn't been dealt, or an array of Cards from the row
      */
-    public Card[] getCardsInRow(int rowNumber);
+    Card[] getCardsInRow(int rowNumber);
 
     /**
      * Gets the last row dealt.
      * @return the last row of Cards dealt.
      */
-    public Card[] getLastRow();
+    Card[] getLastRow();
 }
